@@ -1,0 +1,4 @@
+Revision history for Perl module ZCS::Admin.
+
+0.01	Wed Jul 21 17:38:43 EDT 2010
+	- original version; created with h2xs, wsdl2perl.pl, etc.
