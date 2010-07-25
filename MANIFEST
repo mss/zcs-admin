@@ -25,6 +25,8 @@ lib/ZCS/Admin/Elements/DeleteCosResponse.pm
 lib/ZCS/Admin/Elements/DeleteDomainRequest.pm
 lib/ZCS/Admin/Elements/DeleteDomainResponse.pm
 lib/ZCS/Admin/Elements/Error.pm
+lib/ZCS/Admin/Elements/ExportMailboxRequest.pm
+lib/ZCS/Admin/Elements/ExportMailboxResponse.pm
 lib/ZCS/Admin/Elements/GetAccountInfoRequest.pm
 lib/ZCS/Admin/Elements/GetAccountInfoResponse.pm
 lib/ZCS/Admin/Elements/GetAccountMembershipRequest.pm
@@ -53,6 +55,8 @@ lib/ZCS/Admin/Elements/ModifyCosRequest.pm
 lib/ZCS/Admin/Elements/ModifyCosResponse.pm
 lib/ZCS/Admin/Elements/ModifyDomainRequest.pm
 lib/ZCS/Admin/Elements/ModifyDomainResponse.pm
+lib/ZCS/Admin/Elements/PurgeMovedMailboxRequest.pm
+lib/ZCS/Admin/Elements/PurgeMovedMailboxResponse.pm
 lib/ZCS/Admin/Elements/RemoveAccountAliasRequest.pm
 lib/ZCS/Admin/Elements/RemoveAccountAliasResponse.pm
 lib/ZCS/Admin/Elements/RenameAccountRequest.pm
@@ -78,6 +82,7 @@ lib/ZCS/Admin/Types/CosItemAttribute.pm
 lib/ZCS/Admin/Types/Dl.pm
 lib/ZCS/Admin/Types/Domain.pm
 lib/ZCS/Admin/Types/DomainBy.pm
+lib/ZCS/Admin/Types/ExportMailboxSpecifier.pm
 lib/ZCS/Admin/Types/FaultDetail.pm
 lib/ZCS/Admin/Types/FaultDetailError.pm
 lib/ZCS/Admin/Types/GetAccountSpecifier.pm
@@ -87,6 +92,8 @@ lib/ZCS/Admin/Types/GetServerSpecifier.pm
 lib/ZCS/Admin/Types/HeaderContext.pm
 lib/ZCS/Admin/Types/IntBool.pm
 lib/ZCS/Admin/Types/ItemAttribute.pm
+lib/ZCS/Admin/Types/PurgeMovedMailboxResult.pm
+lib/ZCS/Admin/Types/PurgeMovedMailboxSpecifier.pm
 lib/ZCS/Admin/Types/ServerBy.pm
 lib/ZCS/Admin/Types/UserAgentSpecifier.pm
 lib/ZCS/Admin/Types/ZimbraServer.pm
