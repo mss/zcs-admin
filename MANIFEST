@@ -1,8 +1,5 @@
 Changes
-Makefile.PL
-MANIFEST
-README
-t/00_load.t
+etc/zcs-admin-custom-typemap.pl
 lib/ZCS/Admin.pm
 lib/ZCS/Admin/Elements/AddAccountAliasRequest.pm
 lib/ZCS/Admin/Elements/AddAccountAliasResponse.pm
@@ -10,6 +7,7 @@ lib/ZCS/Admin/Elements/AuthRequest.pm
 lib/ZCS/Admin/Elements/AuthResponse.pm
 lib/ZCS/Admin/Elements/CheckPasswordStrengthRequest.pm
 lib/ZCS/Admin/Elements/CheckPasswordStrengthResponse.pm
+lib/ZCS/Admin/Elements/context.pm
 lib/ZCS/Admin/Elements/CreateAccountRequest.pm
 lib/ZCS/Admin/Elements/CreateAccountResponse.pm
 lib/ZCS/Admin/Elements/CreateCosRequest.pm
@@ -24,6 +22,11 @@ lib/ZCS/Admin/Elements/DeleteCosRequest.pm
 lib/ZCS/Admin/Elements/DeleteCosResponse.pm
 lib/ZCS/Admin/Elements/DeleteDomainRequest.pm
 lib/ZCS/Admin/Elements/DeleteDomainResponse.pm
+lib/ZCS/Admin/Elements/detail.pm
+lib/ZCS/Admin/Elements/DisableArchiveRequest.pm
+lib/ZCS/Admin/Elements/DisableArchiveResponse.pm
+lib/ZCS/Admin/Elements/EnableArchiveRequest.pm
+lib/ZCS/Admin/Elements/EnableArchiveResponse.pm
 lib/ZCS/Admin/Elements/Error.pm
 lib/ZCS/Admin/Elements/ExportMailboxRequest.pm
 lib/ZCS/Admin/Elements/ExportMailboxResponse.pm
@@ -67,14 +70,13 @@ lib/ZCS/Admin/Elements/SearchDirectoryRequest.pm
 lib/ZCS/Admin/Elements/SearchDirectoryResponse.pm
 lib/ZCS/Admin/Elements/SetPasswordRequest.pm
 lib/ZCS/Admin/Elements/SetPasswordResponse.pm
-lib/ZCS/Admin/Elements/context.pm
-lib/ZCS/Admin/Elements/detail.pm
 lib/ZCS/Admin/Interfaces/Admin/AdminSoap12.pm
 lib/ZCS/Admin/Typemaps/Admin.pm
 lib/ZCS/Admin/Types/Account.pm
 lib/ZCS/Admin/Types/AccountBy.pm
 lib/ZCS/Admin/Types/AccountSpecifier.pm
 lib/ZCS/Admin/Types/Alias.pm
+lib/ZCS/Admin/Types/ArchiveSpecifier.pm
 lib/ZCS/Admin/Types/ChangeSpecifier.pm
 lib/ZCS/Admin/Types/Cos.pm
 lib/ZCS/Admin/Types/CosBy.pm
@@ -95,6 +97,10 @@ lib/ZCS/Admin/Types/ItemAttribute.pm
 lib/ZCS/Admin/Types/PurgeMovedMailboxResult.pm
 lib/ZCS/Admin/Types/PurgeMovedMailboxSpecifier.pm
 lib/ZCS/Admin/Types/ServerBy.pm
+lib/ZCS/Admin/Types/sessionId.pm
 lib/ZCS/Admin/Types/UserAgentSpecifier.pm
 lib/ZCS/Admin/Types/ZimbraServer.pm
-lib/ZCS/Admin/Types/sessionId.pm
+Makefile.PL
+MANIFEST
+README
+t/00_load.t
