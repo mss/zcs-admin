@@ -5,7 +5,29 @@ use warnings;
 
 use base qw(ZCS::Admin::Interfaces::Admin::AdminSoap12);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
+
+sub new_element {
+    my ( $self, $elem, @args ) = @_;
+
+    # default to ZCS::Admin::Elements::...
+    $elem = __PACKAGE__ . "::Elements::" . $elem
+      if ( $elem and $elem !~ /::/ );
+    eval "require $elem" || die $@;    ## no critic (ProhibitStringyEval)
+
+    return $elem->new(@args);
+}
+
+sub new_type {
+    my ( $self, $type, @args ) = @_;
+
+    # default to ZCS::Admin::Types::...
+    $type = __PACKAGE__ . "::Types::" . $type
+      if ( $type and $type !~ /::/ );
+    eval "require $type" || die $@;    ## no critic (ProhibitStringyEval)
+
+    return $type->new(@args);
+}
 
 1;
 
