@@ -34,6 +34,7 @@ Class::Std::initialize();
 
 my %name_of :ATTR(:get<name>);
 my %a_of :ATTR(:get<a>);
+my %cos_of :ATTR(:get<cos>);
 my %soapURL_of :ATTR(:get<soapURL>);
 my %adminSoapURL_of :ATTR(:get<adminSoapURL>);
 my %publicMailURL_of :ATTR(:get<publicMailURL>);
@@ -41,6 +42,7 @@ my %publicMailURL_of :ATTR(:get<publicMailURL>);
 __PACKAGE__->_factory(
     [ qw(        name
         a
+        cos
         soapURL
         adminSoapURL
         publicMailURL
@@ -49,6 +51,7 @@ __PACKAGE__->_factory(
     {
         'name' => \%name_of,
         'a' => \%a_of,
+        'cos' => \%cos_of,
         'soapURL' => \%soapURL_of,
         'adminSoapURL' => \%adminSoapURL_of,
         'publicMailURL' => \%publicMailURL_of,
@@ -56,6 +59,7 @@ __PACKAGE__->_factory(
     {
         'name' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
         'a' => 'ZCS::Admin::Types::ItemAttribute',
+        'cos' => 'ZCS::Admin::Types::Cos',
         'soapURL' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
         'adminSoapURL' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
         'publicMailURL' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
@@ -64,6 +68,7 @@ __PACKAGE__->_factory(
 
         'name' => 'name',
         'a' => 'a',
+        'cos' => 'cos',
         'soapURL' => 'soapURL',
         'adminSoapURL' => 'adminSoapURL',
         'publicMailURL' => 'publicMailURL',
@@ -124,6 +129,14 @@ methods:
 
 
 
+=item * cos
+
+ $element->set_cos($data);
+ $element->get_cos();
+
+
+
+
 =item * soapURL
 
  $element->set_soapURL($data);
@@ -163,6 +176,9 @@ Constructor. The following data structure may be passed to new():
  {
    name =>  $some_value, # string
    a =>  { value => $some_value },
+   cos =>  { # ZCS::Admin::Types::Cos
+     a =>  { value => $some_value },
+   },
    soapURL =>  $some_value, # string
    adminSoapURL =>  $some_value, # string
    publicMailURL =>  $some_value, # string
