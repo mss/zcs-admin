@@ -18,8 +18,7 @@ use base qw(
     SOAP::WSDL::XSD::Typelib::ComplexType
 );
 
-our $XML_ATTRIBUTE_CLASS;
-undef $XML_ATTRIBUTE_CLASS;
+our $XML_ATTRIBUTE_CLASS = 'ZCS::Admin::Elements::GetCosRequest::XmlAttr';
 
 sub __get_attr_class {
     return $XML_ATTRIBUTE_CLASS;
@@ -55,6 +54,27 @@ __PACKAGE__->_factory(
 
 
 
+package ZCS::Admin::Elements::GetCosRequest::XmlAttr;
+use base qw(SOAP::WSDL::XSD::Typelib::AttributeSet);
+
+{ # BLOCK to scope variables
+
+my %attrs_of :ATTR(:get<attrs>);
+
+__PACKAGE__->_factory(
+    [ qw(
+        attrs
+    ) ],
+    {
+
+        attrs => \%attrs_of,
+    },
+    {
+        attrs => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
+    }
+);
+
+} # end BLOCK
 
 
 } # end of BLOCK
