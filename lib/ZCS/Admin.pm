@@ -61,7 +61,7 @@ sub get_from_a {
     else {
         my $key = ( keys %data )[0];
         my $val = $data{$key};
-        return wantarray ? @$val : $val->[0];
+        return wantarray ? @$val : $val;
     }
 }
 
