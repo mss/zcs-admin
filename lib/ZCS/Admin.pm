@@ -29,6 +29,60 @@ sub new_type {
     return $type->new(@args);
 }
 
+# faultcode => ..., faultstring => ...
+sub new_fault {
+    my ( $self, %args ) = @_;
+    require SOAP::WSDL::SOAP::Typelib::Fault11;
+    return SOAP::WSDL::SOAP::Typelib::Fault11->new( \%args );
+}
+
+=head1 Helper Methods
+
+=head2 get_from_a
+
+=cut
+
+sub get_from_a {
+    my ( $self, $r, @item ) = @_;
+
+    my %want = map { lc($_) => $_ } @item;
+    my %data;
+
+    foreach my $at ( @{ $r->get_a || [] } ) {
+        my $name = lc( $at->attr->get_n );
+        my $want = defined $want{$name} ? $want{$name} : undef;
+        push( @{ $data{$name} }, $at ) if ( defined $want );
+    }
+
+    # got more than 1 item or %data has multiple keys?
+    if ( @item > 1 or keys(%data) > 1 ) {
+        return wantarray ? %data : \%data;
+    }
+    else {
+        my $key = ( keys %data )[0];
+        my $val = $data{$key};
+        return wantarray ? @$val : $val->[0];
+    }
+}
+
+=head2 item_from_attr
+
+=cut
+
+sub item_from_attr {
+    my ( $self, @attr ) = @_;
+
+    my @item;
+
+    while (@attr) {
+        my ( $n, $v ) = ( shift(@attr), shift(@attr) );
+        my $i = $self->new_type( "ItemAttribute", { value => $v } );
+        $i->attr( { "n" => $n } );
+        push( @item, $i );
+    }
+    return wantarray ? @item : \@item;
+}
+
 1;
 
 __END__
