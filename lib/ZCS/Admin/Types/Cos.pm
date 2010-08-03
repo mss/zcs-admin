@@ -50,21 +50,26 @@ use base qw(SOAP::WSDL::XSD::Typelib::AttributeSet);
 
 my %name_of :ATTR(:get<name>);
 my %id_of :ATTR(:get<id>);
+my %isDefaultCos_of :ATTR(:get<isDefaultCos>);
 
 __PACKAGE__->_factory(
     [ qw(
         name
         id
+        isDefaultCos
     ) ],
     {
 
         name => \%name_of,
 
         id => \%id_of,
+
+        isDefaultCos => \%isDefaultCos_of,
     },
     {
         name => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
         id => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
+        isDefaultCos => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
     }
 );
 
@@ -139,6 +144,12 @@ get_/set_ methods:
 This attribute is of type L<SOAP::WSDL::XSD::Typelib::Builtin::string|SOAP::WSDL::XSD::Typelib::Builtin::string>.
 
 =item * id
+
+
+
+This attribute is of type L<SOAP::WSDL::XSD::Typelib::Builtin::string|SOAP::WSDL::XSD::Typelib::Builtin::string>.
+
+=item * isDefaultCos
 
 
 
