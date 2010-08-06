@@ -1,5 +1,12 @@
 Revision history for Perl module ZCS::Admin.
 
+0.03	Fri Aug  6 13:24:58 EDT 2010
+	- incorporate numerous wrapped methods as part of first attempt to
+	  flesh out this module.
+	- no longer a subclass of ZCS::Admin::Interfaces::Admin::AdminSoap12
+	  but instead we wrap that class with convenience methods, the
+	  underlying object is available via client() and/or cl()
+
 0.02	Sun Aug  1 22:16:39 EDT 2010
 	- add methods to ZCS::Admin:
 	   new_element() new_type() new_fault()
