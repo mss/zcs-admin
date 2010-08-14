@@ -7,7 +7,7 @@ use URI qw();
 use ZCS::Admin::Interfaces::Admin::AdminSoap12 ();
 
 #OFF use SOAP::Lite ( +trace => "debug" );
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 NAME
 
@@ -352,6 +352,62 @@ sub getaccountid {
     return $id;
 }
 
+=head2 addaccountalias
+
+  $z->addaccountalias( name => $acct, alias => $alias );
+
+Arguments:
+
+=over 4
+
+=item {id|name} => $acct
+
+=back
+
+=cut
+
+sub addaccountalias {
+    my ( $self, $by, $acct, %args ) = @_;
+
+    my $id = $acct;
+    if ( $by ne "id" ) {
+        $id = $self->getaccountid($acct);
+        return $id if ( !$id );
+    }
+
+    my $e =
+      $self->new_element( "AddAccountAliasRequest", { id => $id, %args } );
+    return $self->cl->AddAccountAlias( $e, $self->context );
+}
+
+=head2 removeaccountalias
+
+  $z->removeaccountalias( name => $acct, alias => $alias );
+
+Arguments:
+
+=over 4
+
+=item {id|name} => $acct
+
+=back
+
+=cut
+
+sub removeaccountalias {
+    my ( $self, $by, $acct, %args ) = @_;
+
+    my $id = $acct;
+    if ( $by ne "id" ) {
+        $id = $self->getaccountid($acct);
+        return $id if ( !$id );
+    }
+
+    my $e =
+      $self->new_element( "RemoveAccountAliasRequest", { id => $id, %args } );
+    return $self->cl->RemoveAccountAlias( $e, $self->context );
+}
+
 =head2 modifyaccount
 
   $z->modifyaccount( name => $acct, attr1 => val1, attr2 => val2, ... );
@@ -375,13 +431,11 @@ sub modifyaccount {
         return $id if ( !$id );
     }
 
-    my $e = $self->new_element(
-        "ModifyAccountRequest",
-        {
-            id => $id,
-            a  => $self->item_from_attr(@attr),
-        }
-    );
+    my %args;
+    my @item = $self->item_from_attr(@attr);
+    $args{a} = \@item if @item;
+
+    my $e = $self->new_element( "ModifyAccountRequest", { id => $id, %args } );
     return $self->cl->ModifyAccount( $e, $self->context );
 }
 
