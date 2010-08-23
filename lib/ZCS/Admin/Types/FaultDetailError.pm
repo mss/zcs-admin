@@ -23,24 +23,29 @@ Class::Std::initialize();
 
 my %Code_of :ATTR(:get<Code>);
 my %Trace_of :ATTR(:get<Trace>);
+my %a_of :ATTR(:get<a>);
 
 __PACKAGE__->_factory(
     [ qw(        Code
         Trace
+        a
 
     ) ],
     {
         'Code' => \%Code_of,
         'Trace' => \%Trace_of,
+        'a' => \%a_of,
     },
     {
         'Code' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
         'Trace' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
+        'a' => 'ZCS::Admin::Types::ItemAttribute',
     },
     {
 
         'Code' => 'Code',
         'Trace' => 'Trace',
+        'a' => 'a',
     }
 );
 
@@ -84,6 +89,9 @@ methods:
 =item * Trace
 
 
+=item * a
+
+
 
 
 =back
@@ -98,6 +106,7 @@ Constructor. The following data structure may be passed to new():
  { # ZCS::Admin::Types::FaultDetailError
    Code =>  $some_value, # string
    Trace =>  $some_value, # string
+   a =>  { value => $some_value },
  },
 
 

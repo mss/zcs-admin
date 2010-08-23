@@ -91,6 +91,7 @@ Constructor. The following data structure may be passed to new():
    Error =>  { # ZCS::Admin::Types::FaultDetailError
      Code =>  $some_value, # string
      Trace =>  $some_value, # string
+     a =>  { value => $some_value },
    },
  },
 
