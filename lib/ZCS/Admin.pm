@@ -7,7 +7,7 @@ use URI qw();
 use ZCS::Admin::Interfaces::Admin::AdminSoap12 ();
 
 #OFF use SOAP::Lite ( +trace => "debug" );
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 NAME
 
@@ -32,8 +32,8 @@ Collaboration Suite Admin web services (primarily SOAP but also REST).
 =head2 new
 
   my $z = ZCS::Admin->new(
-    name     => 'zimbra',
-    password => $pass,
+      name     => 'zimbra',
+      password => $pass,
   );
   die ZCS::Admin->faultinfo($z) if !$z;
 
@@ -348,7 +348,7 @@ sub getaccountid {
     return $r if !$r;
 
     # use list context: there should be only one element/id in the list!
-    my ($id) = $self->get_from_a( $r, "zimbraid" );
+    my ($id) = $self->get_from_a( $r->get_a, "zimbraid" );
     return $id;
 }
 
@@ -742,7 +742,7 @@ sub purgemovedmailbox {
     return $self->cl->PurgeMovedMailbox( $e, $self->context );
 }
 
-=head addmessage
+=head2 addmessage
 
   $z->addmessage( name => $name, folder => $folder, file => $file )
 
@@ -799,15 +799,26 @@ sub addmessage {
 
 =head2 get_from_a
 
+  my @vals = $z->get_from_a( $result->get_a, @attrs );
+
+Returns an array (arrayref in SCALAR context) of values for attributes
+(case-insensitively) matched from the list of attribute name(s)
+specified in @attrs.
+
+Returns undef on error.
+
 =cut
 
 sub get_from_a {
-    my ( $self, $r, @item ) = @_;
+    my ( $self, $ra, @item ) = @_;
+
+    return undef unless $ra;
+    return undef unless @item;
 
     my %want = map { lc($_) => $_ } @item;
     my %data;
 
-    foreach my $at ( @{ $r->get_a || [] } ) {
+    foreach my $at ( @{ $ra || [] } ) {
         my $name = lc( $at->attr->get_n );
         my $want = defined $want{$name} ? $want{$name} : undef;
         push( @{ $data{$name} }, $at ) if ( defined $want );
@@ -826,10 +837,19 @@ sub get_from_a {
 
 =head2 item_from_attr
 
+  my @item = $z->item_from_attr(@attr_name_val_pairs);
+
+Returns an array (arrayref in SCALAR context) of ItemAttribute types
+populated with the name/value pairs specified in @attr_name_val_pairs.
+
+Returns undef on error.
+
 =cut
 
 sub item_from_attr {
     my ( $self, @attr ) = @_;
+
+    return undef unless @attr;
 
     my @item;
 
