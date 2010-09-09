@@ -39,16 +39,11 @@ Phil Pearl <phil@zimbra.com>
 
 COPYRIGHT AND LICENSE
 =====================
-Zimbra Collaboration Suite Server
-Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010 Zimbra, Inc.
+Copyright (C) 2010 by Phil Pearl.  All rights reserved.
 
-The contents of this file are subject to the Zimbra Public License
-Version 1.3 ("License"); you may not use this file except in
-compliance with the License.  You may obtain a copy of the License at
-http://www.zimbra.com/license.
-
-Software distributed under the License is distributed on an "AS IS"
-basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.10.1 or,
+at your option, any later version of Perl 5 you may have available.
 
 BACKGROUND and NOTES
 ====================
@@ -56,19 +51,19 @@ This module started by using wsdl2perl.pl for generating supporting
 modules.  Below is an example of the command line used and some
 additional details about the arguments used in the command:
 
-  .../bin/wsdl2perl.pl \
-    -a ZCS::Admin::Attributes \
-    -t ZCS::Admin::Types \
-    -e ZCS::Admin::Elements \
-    -m ZCS::Admin::Typemaps \
-    -i ZCS::Admin::Interfaces \
-    -sp ZCS::Admin::Server \
-    -mi .../zcs-admin-custom-typemap.pl \
-    file:.../ZimbraAdmin.wsdl
+.../bin/wsdl2perl.pl \
+  -a ZCS::Admin::Attributes \
+  -t ZCS::Admin::Types \
+  -e ZCS::Admin::Elements \
+  -m ZCS::Admin::Typemaps \
+  -i ZCS::Admin::Interfaces \
+  -sp ZCS::Admin::Server \
+  -mi .../zcs-admin-custom-typemap.pl \
+  file:.../ZimbraAdmin.wsdl
 
 Where:
-- .../bin/wsdl2perl.pl :: utility provided by SOAP::WSDL
-- .../zcs-admin-custom-typemap.pl :: (typemap) hash to map types to
+* .../bin/wsdl2perl.pl :: utility provided by SOAP::WSDL
+* .../zcs-admin-custom-typemap.pl :: (typemap) hash to map types to
   modules that wsdl2perl.pl did not handle
-- .../ZimbraAdmin.wsdl :: WSDL that describes some (but not yet all)
+* .../ZimbraAdmin.wsdl :: WSDL that describes some (but not yet all)
   of the ZCS Admin SOAP API capabilities
