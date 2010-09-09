@@ -1,5 +1,9 @@
 Revision history for Perl module ZCS::Admin.
 
+0.05	Thu Sep  9 16:37:20 EDT 2010
+	- get_from_a now takes $result->get_a as the first argument
+	  instead of just $result.
+
 0.04	Fri Aug 13 22:27:02 EDT 2010
 	- fix modifyaccount adding multiple attributes
 	- add addaccountalias() and removeaccountalias()
