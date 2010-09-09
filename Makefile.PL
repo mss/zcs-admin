@@ -9,8 +9,8 @@ WriteMakefile(
     VERSION_FROM  => 'lib/ZCS/Admin.pm',
     ABSTRACT_FROM => 'lib/ZCS/Admin.pm',
     PREREQ_PM     => {
-        'Class::Std' => 0.011,
-        'SOAP::WSDL' => 2.00.10,
+        'Class::Std' => "0.011",
+        'SOAP::WSDL' => "2.00.10",
         'Test::More' => 0,
     },
 );
