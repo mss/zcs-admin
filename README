@@ -5,12 +5,13 @@ Suite (ZCS) Admin Web Service (SOAP and REST)
 
 DEPENDENCIES
 ============
-The following are the minimum requirements for:
+The following are the minimum requirements for using ZCS::Admin:
+
 - Perl 5.8
     http://www.perl.org/
 - SOAP::WSDL 2.00.10 (thus Class::Std, etc.)
     http://search.cpan.org/dist/SOAP-WSDL/
-- Zimbra Collaboration Suite 6
+- Zimbra Collaboration Suite
     http://www.zimbra.com/
 - ZCS::Admin (this package)
     http://zcs-admin.sf.net/
@@ -68,7 +69,6 @@ additional details about the arguments used in the command:
       -mi .../zcs-admin-custom-typemap.pl \
       file:.../ZimbraAdmin.wsdl
 
-Where:
 - .../bin/wsdl2perl.pl :: utility provided by SOAP::WSDL
 - .../zcs-admin-custom-typemap.pl :: (typemap) hash to map types to
   modules that wsdl2perl.pl did not handle
