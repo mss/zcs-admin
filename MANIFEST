@@ -1,5 +1,4 @@
 Changes
-etc/zcs-admin-custom-typemap.pl
 lib/ZCS/Admin.pm
 lib/ZCS/Admin/Elements/AddAccountAliasRequest.pm
 lib/ZCS/Admin/Elements/AddAccountAliasResponse.pm
@@ -12,6 +11,8 @@ lib/ZCS/Admin/Elements/CreateAccountRequest.pm
 lib/ZCS/Admin/Elements/CreateAccountResponse.pm
 lib/ZCS/Admin/Elements/CreateCosRequest.pm
 lib/ZCS/Admin/Elements/CreateCosResponse.pm
+lib/ZCS/Admin/Elements/CreateDistributionListRequest.pm
+lib/ZCS/Admin/Elements/CreateDistributionListResponse.pm
 lib/ZCS/Admin/Elements/CreateDomainRequest.pm
 lib/ZCS/Admin/Elements/CreateDomainResponse.pm
 lib/ZCS/Admin/Elements/DelegateAuthRequest.pm
@@ -20,6 +21,8 @@ lib/ZCS/Admin/Elements/DeleteAccountRequest.pm
 lib/ZCS/Admin/Elements/DeleteAccountResponse.pm
 lib/ZCS/Admin/Elements/DeleteCosRequest.pm
 lib/ZCS/Admin/Elements/DeleteCosResponse.pm
+lib/ZCS/Admin/Elements/DeleteDistributionListRequest.pm
+lib/ZCS/Admin/Elements/DeleteDistributionListResponse.pm
 lib/ZCS/Admin/Elements/DeleteDomainRequest.pm
 lib/ZCS/Admin/Elements/DeleteDomainResponse.pm
 lib/ZCS/Admin/Elements/detail.pm
@@ -48,6 +51,8 @@ lib/ZCS/Admin/Elements/GetAllServersRequest.pm
 lib/ZCS/Admin/Elements/GetAllServersResponse.pm
 lib/ZCS/Admin/Elements/GetCosRequest.pm
 lib/ZCS/Admin/Elements/GetCosResponse.pm
+lib/ZCS/Admin/Elements/GetDistributionListRequest.pm
+lib/ZCS/Admin/Elements/GetDistributionListResponse.pm
 lib/ZCS/Admin/Elements/GetDomainRequest.pm
 lib/ZCS/Admin/Elements/GetDomainResponse.pm
 lib/ZCS/Admin/Elements/GetServerRequest.pm
@@ -82,6 +87,7 @@ lib/ZCS/Admin/Types/Cos.pm
 lib/ZCS/Admin/Types/CosBy.pm
 lib/ZCS/Admin/Types/CosItemAttribute.pm
 lib/ZCS/Admin/Types/Dl.pm
+lib/ZCS/Admin/Types/DlBy.pm
 lib/ZCS/Admin/Types/Domain.pm
 lib/ZCS/Admin/Types/DomainBy.pm
 lib/ZCS/Admin/Types/ExportMailboxSpecifier.pm
@@ -89,6 +95,7 @@ lib/ZCS/Admin/Types/FaultDetail.pm
 lib/ZCS/Admin/Types/FaultDetailError.pm
 lib/ZCS/Admin/Types/GetAccountSpecifier.pm
 lib/ZCS/Admin/Types/GetCosSpecifier.pm
+lib/ZCS/Admin/Types/GetDlSpecifier.pm
 lib/ZCS/Admin/Types/GetDomainSpecifier.pm
 lib/ZCS/Admin/Types/GetServerSpecifier.pm
 lib/ZCS/Admin/Types/HeaderContext.pm
@@ -103,4 +110,6 @@ lib/ZCS/Admin/Types/ZimbraServer.pm
 Makefile.PL
 MANIFEST
 README
+src/Makefile
+src/zcs-admin-custom-typemap.pl
 t/00_load.t
