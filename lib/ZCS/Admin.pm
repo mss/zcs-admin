@@ -995,7 +995,7 @@ Phil Pearl E<lt>phil@zimbra.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010 by Phil Pearl.  All rights reserved.
+Copyright (C) 2010-2011 by Phil Pearl.  All rights reserved.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.10.1 or,
