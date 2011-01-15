@@ -1,5 +1,5 @@
 
-package ZCS::Admin::Elements::GetAccountMembershipResponse;
+package ZCS::Admin::Elements::DeleteDistributionListRequest;
 use strict;
 use warnings;
 
@@ -7,7 +7,7 @@ use warnings;
 
 sub get_xmlns { 'urn:zimbraAdmin' }
 
-__PACKAGE__->__set_name('GetAccountMembershipResponse');
+__PACKAGE__->__set_name('DeleteDistributionListRequest');
 __PACKAGE__->__set_nillable();
 __PACKAGE__->__set_minOccurs();
 __PACKAGE__->__set_maxOccurs();
@@ -32,21 +32,21 @@ Class::Std::initialize();
 
 { # BLOCK to scope variables
 
-my %account_of :ATTR(:get<account>);
+my %id_of :ATTR(:get<id>);
 
 __PACKAGE__->_factory(
-    [ qw(        account
+    [ qw(        id
 
     ) ],
     {
-        'account' => \%account_of,
+        'id' => \%id_of,
     },
     {
-        'account' => 'ZCS::Admin::Types::Dl',
+        'id' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
     },
     {
 
-        'account' => 'account',
+        'id' => 'id',
     }
 );
 
@@ -68,12 +68,12 @@ __PACKAGE__->_factory(
 
 =head1 NAME
 
-ZCS::Admin::Elements::GetAccountMembershipResponse
+ZCS::Admin::Elements::DeleteDistributionListRequest
 
 =head1 DESCRIPTION
 
 Perl data type class for the XML Schema defined element
-GetAccountMembershipResponse from the namespace urn:zimbraAdmin.
+DeleteDistributionListRequest from the namespace urn:zimbraAdmin.
 
 
 
@@ -88,10 +88,10 @@ methods:
 
 =over
 
-=item * account
+=item * id
 
- $element->set_account($data);
- $element->get_account();
+ $element->set_id($data);
+ $element->get_id();
 
 
 
@@ -104,15 +104,12 @@ methods:
 
 =head2 new
 
- my $element = ZCS::Admin::Elements::GetAccountMembershipResponse->new($data);
+ my $element = ZCS::Admin::Elements::DeleteDistributionListRequest->new($data);
 
 Constructor. The following data structure may be passed to new():
 
  {
-   account =>  { # ZCS::Admin::Types::Dl
-     a =>  { value => $some_value },
-     dlm =>  $some_value, # string
-   },
+   id =>  $some_value, # string
  },
 
 =head1 AUTHOR

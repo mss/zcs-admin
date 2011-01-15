@@ -14,3 +14,16 @@ WriteMakefile(
         'Test::More' => 0,
     },
 );
+
+package MY;
+
+sub postamble {
+
+    return <<'MAKE_MODULES';
+
+wsdl2perl: etc/Makefile
+	cd etc && $(MAKE)
+
+MAKE_MODULES
+
+}

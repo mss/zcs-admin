@@ -7,7 +7,7 @@ use URI qw();
 use ZCS::Admin::Interfaces::Admin::AdminSoap12 ();
 
 #OFF use SOAP::Lite ( +trace => "debug" );
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 =head1 NAME
 
@@ -255,6 +255,30 @@ sub auth {
     return $r ? $self : $r;
 }
 
+=head2 delegateauth
+
+  $z->delegateauth( name => $acct );
+
+Calls DelegateAuth on the underlying ZCS Admin object. And returns results.
+
+Probably need to do more but this is a start. Probably need some sort of
+context updating in most cases. But not sure how we should manage multiple
+contexts and push/pop them as we need.
+
+Returns DelegateAuth response for now.
+
+=cut
+
+sub delegateauth {
+    my ( $self, $by, $acct ) = @_;
+
+    my $s = $self->new_type( "GetAccountSpecifier", { value => $acct } );
+    $s->attr( { "by" => $by } );
+
+    my $e = $self->new_element( "DelegateAuthRequest", { account => $s } );
+    return $self->cl->DelegateAuth( $e, $self->context );
+}
+
 =head2 context
 
 Returns a context element object using cached information if it exists
@@ -441,7 +465,7 @@ sub modifyaccount {
 
 =head2 renameaccount
 
-  $z->renameaccount( name => $acct );
+  $z->renameaccount( name => $acct, $newname );
 
 Arguments:
 
@@ -449,12 +473,14 @@ Arguments:
 
 =item {id|name} => $acct
 
+=item $newname
+
 =back
 
 =cut
 
 sub renameaccount {
-    my ( $self, $by, $acct, $name ) = @_;
+    my ( $self, $by, $acct, $newname ) = @_;
 
     my $id = $acct;
     if ( $by ne "id" ) {
@@ -462,7 +488,7 @@ sub renameaccount {
         return $id if ( !$id );
     }
 
-    return $self->cl->RenameAccount( { id => $id, newName => $name },
+    return $self->cl->RenameAccount( { id => $id, newName => $newname },
         $self->context );
 }
 
@@ -494,13 +520,15 @@ sub deleteaccount {
 
 =head2 getcos
 
-  $z->getcos( name => $cos );
+  $z->getcos( name => $cos, @attrs );
 
 Arguments:
 
 =over 4
 
 =item {id|name} => $cos
+
+=item @attrs (optional)
 
 =back
 
@@ -793,6 +821,70 @@ sub addmessage {
             faultstring => "$info: $err",
         );
     }
+}
+
+=head2 getdistributionlist
+
+  $z->getdistributionlist( name => $list );
+
+Arguments:
+
+=over 4
+
+=item {id|name} => $list
+
+=back
+
+=cut
+
+sub getdistributionlist {
+    my ( $self, $by, $acct ) = @_;
+
+    my $s = $self->new_type( "GetDlSpecifier", { value => $acct } );
+    $s->attr( { "by" => $by } );
+
+    my $e = $self->new_element( "GetDistributionListRequest", { dl => $s } );
+    return $self->cl->GetDistributionList( $e, $self->context );
+}
+
+=head2 createdistributionlist
+
+  $z->createtdistributionlist( name => $list );
+
+=cut
+
+sub createdistributionlist {
+    my ( $self, %args ) = @_;
+
+    my $e = $self->new_element( "CreateDistributionListRequest", {%args} );
+    return $self->cl->CreateDistributionList( $e, $self->context );
+}
+
+=head2 deletedistributionlist
+
+  $z->deletedistributionlist( name => $list );
+
+Arguments:
+
+=over 4
+
+=item {id|name} => $list
+
+=back
+
+=cut
+
+sub deletedistributionlist {
+    my ( $self, $by, $list ) = @_;
+
+    my $id = $list;
+    if ( $by ne "id" ) {
+        my $r = $self->getdistributionlist( $by => $list );
+        return $r if !$r;
+        $id = $r->get_dl->attr->get_id;
+    }
+
+    return $self->cl->DeleteDistributionList( { id => $id }, $self->context );
 }
 
 =head1 Helper Methods

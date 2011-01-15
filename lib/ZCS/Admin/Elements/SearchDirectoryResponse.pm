@@ -169,6 +169,7 @@ Constructor. The following data structure may be passed to new():
    },
    dl =>  { # ZCS::Admin::Types::Dl
      a =>  { value => $some_value },
+     dlm =>  $some_value, # string
    },
    domain =>  { # ZCS::Admin::Types::Domain
      a =>  { value => $some_value },

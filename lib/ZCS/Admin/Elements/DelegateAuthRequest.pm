@@ -41,7 +41,7 @@ __PACKAGE__->_factory(
         'account' => \%account_of,
     },
     {
-        'account' => 'ZCS::Admin::Types::Account',
+        'account' => 'ZCS::Admin::Types::GetAccountSpecifier',
     },
     {
 
@@ -129,9 +129,7 @@ methods:
 Constructor. The following data structure may be passed to new():
 
  {
-   account =>  { # ZCS::Admin::Types::Account
-     a =>  { value => $some_value },
-   },
+   account =>  { value => $some_value },
  },
 
 =head1 AUTHOR

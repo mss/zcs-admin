@@ -21,20 +21,25 @@ Class::Std::initialize();
 { # BLOCK to scope variables
 
 my %a_of :ATTR(:get<a>);
+my %dlm_of :ATTR(:get<dlm>);
 
 __PACKAGE__->_factory(
     [ qw(        a
+        dlm
 
     ) ],
     {
         'a' => \%a_of,
+        'dlm' => \%dlm_of,
     },
     {
         'a' => 'ZCS::Admin::Types::ItemAttribute',
+        'dlm' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
     },
     {
 
         'a' => 'a',
+        'dlm' => 'dlm',
     }
 );
 
@@ -106,6 +111,9 @@ methods:
 =item * a
 
 
+=item * dlm
+
+
 
 
 =back
@@ -119,6 +127,7 @@ Constructor. The following data structure may be passed to new():
 
  { # ZCS::Admin::Types::Dl
    a =>  { value => $some_value },
+   dlm =>  $some_value, # string
  },
 
 
