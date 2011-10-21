@@ -1,6 +1,7 @@
 Revision history for Perl module ZCS::Admin.
 
-0.07_02	Fri Oct 21 15:17:30 EDT 2011
+0.07_03	Fri Oct 21 16:52:59 EDT 2011
+	- no longer require @items be specified when calling get_from_a
 	- sync with latest WSDL, which includes:
 	  GrantRight RevokeRight
 	- rt.cpan.org#68620: Typemap for DL should use GetDlSpecifier
