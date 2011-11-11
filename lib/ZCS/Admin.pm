@@ -7,7 +7,7 @@ use URI qw();
 use ZCS::Admin::Interfaces::Admin::AdminSoap12 ();
 
 #OFF use SOAP::Lite ( +trace => "debug" );
-our $VERSION = '0.07_03';
+our $VERSION = '0.07';
 
 =head1 NAME
 
