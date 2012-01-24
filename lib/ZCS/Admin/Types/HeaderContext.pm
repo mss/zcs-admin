@@ -22,7 +22,7 @@ Class::Std::initialize();
 { # BLOCK to scope variables
 
 my %authToken_of :ATTR(:get<authToken>);
-my %sessionId_of :ATTR(:get<sessionId>);
+my %session_of :ATTR(:get<session>);
 my %account_of :ATTR(:get<account>);
 my %change_of :ATTR(:get<change>);
 my %targetServer_of :ATTR(:get<targetServer>);
@@ -30,7 +30,7 @@ my %userAgent_of :ATTR(:get<userAgent>);
 
 __PACKAGE__->_factory(
     [ qw(        authToken
-        sessionId
+        session
         account
         change
         targetServer
@@ -39,7 +39,7 @@ __PACKAGE__->_factory(
     ) ],
     {
         'authToken' => \%authToken_of,
-        'sessionId' => \%sessionId_of,
+        'session' => \%session_of,
         'account' => \%account_of,
         'change' => \%change_of,
         'targetServer' => \%targetServer_of,
@@ -47,7 +47,7 @@ __PACKAGE__->_factory(
     },
     {
         'authToken' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
-        'sessionId' => 'ZCS::Admin::Types::sessionId',
+        'session' => 'ZCS::Admin::Types::session',
         'account' => 'ZCS::Admin::Types::AccountSpecifier',
         'change' => 'ZCS::Admin::Types::ChangeSpecifier',
         'targetServer' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
@@ -56,7 +56,7 @@ __PACKAGE__->_factory(
     {
 
         'authToken' => 'authToken',
-        'sessionId' => 'sessionId',
+        'session' => 'session',
         'account' => 'account',
         'change' => 'change',
         'targetServer' => 'targetServer',
@@ -101,7 +101,7 @@ methods:
 =item * authToken
 
 
-=item * sessionId
+=item * session
 
 
 =item * account
@@ -129,7 +129,7 @@ Constructor. The following data structure may be passed to new():
 
  { # ZCS::Admin::Types::HeaderContext
    authToken =>  $some_value, # string
-   sessionId =>  { value => $some_value },
+   session =>  { value => $some_value },
    account =>  { value => $some_value },
    change =>  { value => $some_value },
    targetServer =>  $some_value, # string

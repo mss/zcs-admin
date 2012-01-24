@@ -49,7 +49,7 @@ Constructor. The following data structure may be passed to new():
 
  { # ZCS::Admin::Types::HeaderContext
    authToken =>  $some_value, # string
-   sessionId =>  { value => $some_value },
+   session =>  { value => $some_value },
    account =>  { value => $some_value },
    change =>  { value => $some_value },
    targetServer =>  $some_value, # string

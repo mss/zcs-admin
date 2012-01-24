@@ -7,7 +7,7 @@ use URI qw();
 use ZCS::Admin::Interfaces::Admin::AdminSoap12 ();
 
 #OFF use SOAP::Lite ( +trace => "debug" );
-our $VERSION = '0.07';
+our $VERSION = '0.08_01';
 
 =head1 NAME
 
@@ -17,8 +17,7 @@ ZCS::Admin - module for the Zimbra Collaboration Suite (ZCS) Admin web services
 
   use ZCS::Admin;
 
-  my $zimbra = ZCS::Admin->new;
-  my $resp = $zimbra->auth( name => 'admin', password => 'mypass' );
+  my $z = ZCS::Admin->new( name => 'admin', password => 'mypass' );
   die ZCS::Admin->faultinfo($resp) if !$resp;
   ...
 
@@ -65,7 +64,7 @@ sub new {
     bless( $self, $class );
 
     my $r = $self->cl;
-    return $r ? $self->auth : $r;
+    return $r ? $self : $r;
 }
 
 =pod
@@ -240,14 +239,18 @@ on failures.
 
 sub auth {
     my ($self) = @_;
+use Data::Dumper; use Carp qw(cluck); cluck("in auth: ", Dumper($self), "\n");
 
     my %auth = ( map { $_ => $self->$_ } qw(name password) );
-    my $r = $self->client->Auth( \%auth );
+
+    my $r = $self->client->Auth( \%auth,
+      $self->new_element( "context", { session => "" } )
+    );
     if ($r) {
         delete $self->{_context};
         $self->{_auth} = {
             expires   => $r->get_lifetime / 1000 + time(),
-            sessionId => $r->get_sessionId,
+            session   => $r->get_session,
             authToken => $r->get_authToken,
         };
     }
@@ -297,7 +300,7 @@ sub context {
     if ($r) {
         $r =
           $self->new_element( "context",
-            { map { $_ => $self->{_auth}->{$_} } qw(sessionId authToken) } );
+            { map { $_ => $self->{_auth}->{$_} } qw(session authToken) } );
         $self->{_context} = $r if $r;
     }
 

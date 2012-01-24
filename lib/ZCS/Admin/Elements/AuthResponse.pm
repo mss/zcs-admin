@@ -35,33 +35,33 @@ Class::Std::initialize();
 my %authToken_of :ATTR(:get<authToken>);
 my %lifetime_of :ATTR(:get<lifetime>);
 my %a_of :ATTR(:get<a>);
-my %sessionId_of :ATTR(:get<sessionId>);
+my %session_of :ATTR(:get<session>);
 
 __PACKAGE__->_factory(
     [ qw(        authToken
         lifetime
         a
-        sessionId
+        session
 
     ) ],
     {
         'authToken' => \%authToken_of,
         'lifetime' => \%lifetime_of,
         'a' => \%a_of,
-        'sessionId' => \%sessionId_of,
+        'session' => \%session_of,
     },
     {
         'authToken' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
         'lifetime' => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
         'a' => 'ZCS::Admin::Types::ItemAttribute',
-        'sessionId' => 'ZCS::Admin::Types::sessionId',
+        'session' => 'ZCS::Admin::Types::session',
     },
     {
 
         'authToken' => 'authToken',
         'lifetime' => 'lifetime',
         'a' => 'a',
-        'sessionId' => 'sessionId',
+        'session' => 'session',
     }
 );
 
@@ -127,10 +127,10 @@ methods:
 
 
 
-=item * sessionId
+=item * session
 
- $element->set_sessionId($data);
- $element->get_sessionId();
+ $element->set_session($data);
+ $element->get_session();
 
 
 
@@ -151,7 +151,7 @@ Constructor. The following data structure may be passed to new():
    authToken =>  $some_value, # string
    lifetime =>  $some_value, # string
    a =>  { value => $some_value },
-   sessionId =>  { value => $some_value },
+   session =>  { value => $some_value },
  },
 
 =head1 AUTHOR

@@ -1,75 +1,45 @@
-package ZCS::Admin::Types::Account;
+package ZCS::Admin::Types::session;
 use strict;
 use warnings;
 
 
 __PACKAGE__->_set_element_form_qualified(1);
 
-sub get_xmlns { 'urn:zimbraAdmin' };
+sub get_xmlns { 'urn:zimbra' };
 
-our $XML_ATTRIBUTE_CLASS = 'ZCS::Admin::Types::Account::_Account::XmlAttr';
+our $XML_ATTRIBUTE_CLASS = 'ZCS::Admin::Types::session::_session::XmlAttr';
 
 sub __get_attr_class {
     return $XML_ATTRIBUTE_CLASS;
 }
 
-use Class::Std::Fast::Storable constructor => 'none';
-use base qw(SOAP::WSDL::XSD::Typelib::ComplexType);
-
-Class::Std::initialize();
-
-{ # BLOCK to scope variables
-
-my %a_of :ATTR(:get<a>);
-
-__PACKAGE__->_factory(
-    [ qw(        a
-
-    ) ],
-    {
-        'a' => \%a_of,
-    },
-    {
-        'a' => 'ZCS::Admin::Types::ItemAttribute',
-    },
-    {
-
-        'a' => 'a',
-    }
+use base qw(
+    SOAP::WSDL::XSD::Typelib::ComplexType
+    SOAP::WSDL::XSD::Typelib::Builtin::string
 );
 
-} # end BLOCK
-
-
-
-
-package ZCS::Admin::Types::Account::_Account::XmlAttr;
+package ZCS::Admin::Types::session::_session::XmlAttr;
 use base qw(SOAP::WSDL::XSD::Typelib::AttributeSet);
 
 { # BLOCK to scope variables
 
-my %name_of :ATTR(:get<name>);
+my %type_of :ATTR(:get<type>);
 my %id_of :ATTR(:get<id>);
-my %isExternal_of :ATTR(:get<isExternal>);
 
 __PACKAGE__->_factory(
     [ qw(
-        name
+        type
         id
-        isExternal
     ) ],
     {
 
-        name => \%name_of,
+        type => \%type_of,
 
         id => \%id_of,
-
-        isExternal => \%isExternal_of,
     },
     {
-        name => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
+        type => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
         id => 'SOAP::WSDL::XSD::Typelib::Builtin::string',
-        isExternal => 'ZCS::Admin::Types::IntBool',
     }
 );
 
@@ -84,12 +54,12 @@ __PACKAGE__->_factory(
 
 =head1 NAME
 
-ZCS::Admin::Types::Account
+ZCS::Admin::Types::session
 
 =head1 DESCRIPTION
 
 Perl data type class for the XML Schema defined complexType
-Account from the namespace urn:zimbraAdmin.
+session from the namespace urn:zimbra.
 
 
 
@@ -103,9 +73,6 @@ methods:
 
 =over
 
-=item * a
-
-
 
 
 =back
@@ -117,9 +84,7 @@ methods:
 
 Constructor. The following data structure may be passed to new():
 
- { # ZCS::Admin::Types::Account
-   a =>  { value => $some_value },
- },
+ { value => $some_value },
 
 
 
@@ -130,14 +95,14 @@ See the correspondent WSDL/XML Schema if in question.
 
 This class has additional attributes, accessibly via the C<attr()> method.
 
-attr() returns an object of the class ZCS::Admin::Types::Account::_Account::XmlAttr.
+attr() returns an object of the class ZCS::Admin::Types::session::_session::XmlAttr.
 
 The following attributes can be accessed on this object via the corresponding
 get_/set_ methods:
 
 =over
 
-=item * name
+=item * type
 
 
 
@@ -148,12 +113,6 @@ This attribute is of type L<SOAP::WSDL::XSD::Typelib::Builtin::string|SOAP::WSDL
 
 
 This attribute is of type L<SOAP::WSDL::XSD::Typelib::Builtin::string|SOAP::WSDL::XSD::Typelib::Builtin::string>.
-
-=item * isExternal
-
-
-
-This attribute is of type L<ZCS::Admin::Types::IntBool|ZCS::Admin::Types::IntBool>.
 
 
 =back
