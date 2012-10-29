@@ -7,7 +7,7 @@ use URI qw();
 use ZCS::Admin::Interfaces::Admin::AdminSoap12 ();
 
 #OFF use SOAP::Lite ( +trace => "debug" );
-our $VERSION = '0.08_01';
+our $VERSION = '0.08_03';
 
 =head1 NAME
 
@@ -239,7 +239,6 @@ on failures.
 
 sub auth {
     my ($self) = @_;
-use Data::Dumper; use Carp qw(cluck); cluck("in auth: ", Dumper($self), "\n");
 
     my %auth = ( map { $_ => $self->$_ } qw(name password) );
 

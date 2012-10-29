@@ -2,9 +2,9 @@
 # Set variables as needed for your environment and make:
 #   WSDL2PERL=/site/soap-wsdl/default/bin/wsdl2perl.pl
 #   PERL5LIB=/site/soap-wsdl/default/lib:/site/perl/default/lib
-#   make -e
+#   make -e -f Makefile_wsdl2perl DRYRUN=""
 
-ADMINWSDL = ZimbraAdmin.wsdl
+ADMINWSDL = ../zcs-wsdl/ZimbraAdmin.wsdl
 PLTYPEMAP = zcs-admin-custom-typemap.pl
 
 TMPLIBDIR = newlib
@@ -13,7 +13,8 @@ TMPLIBPATH = $(TMPLIBDIR)/$(ZCSADMINDIR)/
 ZCSLIBPATH = ../lib/$(ZCSADMINDIR)/
 
 RSYNC = /usr/bin/rsync
-RSYNCARGS = -rlcv
+DRYRUN = --dry-run
+RSYNCARGS = -rlcv --delete
 
 WSDL2PERL = wsdl2perl.pl
 WSDLARGS  = -a ZCS::Admin::Attributes \
@@ -31,7 +32,7 @@ wsdl2perl: $(PLTYPEMAP) $(ADMINWSDL) $(WSDL2PERL)
 	@echo run 'make updatelib' to copy updates from $(TMPLIBDIR) to $(ZCSLIBPATH)
 
 updatelib: $(TMPLIBPATH) $(ZCSLIBPATH) $(rsync)
-	-$(RSYNC) $(RSYNCARGS) $(TMPLIBPATH) $(ZCSLIBPATH)
+	-$(RSYNC) $(DRYRUN) $(RSYNCARGS) $(TMPLIBPATH) $(ZCSLIBPATH)
 
 all: wsdl2perl updatelib
 

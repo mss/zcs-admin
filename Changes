@@ -1,6 +1,7 @@
 Revision history for Perl module ZCS::Admin.
 
-0.08_01 Mon Jan 23 22:50:25 EST 2012
+0.08_03 Tue Jan 24 16:15:52 EST 2012
+	- update MANIFEST
 	- *ZCS6+: use "session" (not ZCS5 "sessionId") as this is used
           to get/set session state (AuthResponse, HeaderContext)
 	- *ZCS6+: Auth now uses an empty session to get server to
